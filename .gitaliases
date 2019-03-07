@@ -1,0 +1,40 @@
+#!/bin/bash
+
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
+alias gmaster='git stash && git checkout master && ggpull'
+
+alias gremove-all='git checkout . && git clean -fd'
+
+alias glast='git --no-pager log --pretty=format:"%H"'
+
+alias gbdel-others='git branch | grep -v "master" | grep -v "^*" | xargs git branch -d'
+alias gbdel-others-f='git branch | grep -v "master" | grep -v "^*" | xargs git branch -D'
+
+alias gnb='git checkout -b'
+
+function gu() {
+  local readonly current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+  git fetch origin --prune \
+    && git pull origin "${current_branch}"
+}
+
+
+function git_commands() {
+  local readonly all_commands=(gmaster        'stashes, moves to master and does ggpull'
+                               gremove-all    'checkout + clean -fd'
+                               gu             'fetch with prune and pulls current branch'
+                               gbdel-others   'deletes all other branches'
+                               gbdel-others-f 'force deletes all other branches'
+                               glast          'logs commits with only hash'
+                               gnb            'git checkout -b')
+  for range in {1..${#all_commands[@]}..2}
+  do
+    command=${all_commands[$range]}
+    description=${all_commands[$range+1]}
+    echo "${red}${command}${green}: ${description}${reset}"
+  done
+}
