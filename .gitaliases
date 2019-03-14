@@ -10,6 +10,8 @@ alias gremove-all='git checkout . && git clean -fd'
 
 alias glast='git --no-pager log --pretty=format:"%H"'
 
+alias gam='git commit --amend'
+
 alias gbdel-others='git branch | grep -v "master" | grep -v "^*" | xargs git branch -d'
 alias gbdel-others-f='git branch | grep -v "master" | grep -v "^*" | xargs git branch -D'
 
@@ -30,7 +32,8 @@ function git_commands() {
                                gbdel-others   'deletes all other branches'
                                gbdel-others-f 'force deletes all other branches'
                                glast          'logs commits with only hash'
-                               gnb            'git checkout -b')
+                               gnb            'git checkout -b'
+                               gam            'git commit --amend')
   for range in {1..${#all_commands[@]}..2}
   do
     command=${all_commands[$range]}
