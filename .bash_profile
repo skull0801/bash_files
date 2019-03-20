@@ -1,11 +1,21 @@
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
+export DERIVED_DATA_PATH="$HOME/Library/Developer/Xcode/DerivedData"
+
 source ~/.keys
 source ~/.nurc
 source ~/.gitaliases
 
 alias watch_a='watch -x bash -c '
+
+function ddata() {
+  cd $DERIVED_DATA_PATH
+}
+
+function oddata() {
+  open $DERIVED_DATA_PATH
+}
 
 function reload() {
   exec $SHELL -l
