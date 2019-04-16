@@ -4,7 +4,6 @@ export PATH="/usr/local/bin:$PATH"
 export DERIVED_DATA_PATH="$HOME/Library/Developer/Xcode/DerivedData"
 
 source ~/.keys
-source ~/.nurc
 source ~/.gitaliases
 
 alias watch_a='watch -x bash -c '
