@@ -17,6 +17,8 @@ alias gbdel-others-f='git branch | grep -v "master" | grep -v "^*" | xargs git b
 
 alias gnb='git checkout -b'
 
+alias glc='git diff HEAD~1'
+
 function gu() {
   local readonly current_branch="$(git rev-parse --abbrev-ref HEAD)"
 
