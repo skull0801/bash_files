@@ -1,12 +1,17 @@
+#!/usr/bin/env bash
+
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
-export DERIVED_DATA_PATH="$HOME/Library/Developer/Xcode/DerivedData"
+for file in $(find ~/.profiles.d* -type f); do
+    source $file
+done
 
-source ~/.keys
 source ~/.gitaliases
 
 alias watch_a='watch -x bash -c '
+
+export DERIVED_DATA_PATH="$HOME/Library/Developer/Xcode/DerivedData"
 
 function ddata() {
   cd $DERIVED_DATA_PATH
@@ -40,7 +45,3 @@ function ds () {
     echo -e "\nVolumes\n"
     docker volume ls
 }
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
