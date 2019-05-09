@@ -26,6 +26,9 @@ function gu() {
     && git pull origin "${current_branch}"
 }
 
+function clc() {
+  glast -1 | pbcopy
+}
 
 function git_commands() {
   local readonly all_commands=(gmaster        'stashes, moves to master and does ggpull'
@@ -35,8 +38,9 @@ function git_commands() {
                                gbdel-others-f 'force deletes all other branches'
                                glast          'logs commits with only hash'
                                gnb            'git checkout -b'
-                               gam            'git commit --amend')
-  for range in {1..${#all_commands[@]}..2}
+                               gam            'git commit --amend'
+			       clc	      'copy last commit hash')  
+for range in {1..${#all_commands[@]}..2}
   do
     command=${all_commands[$range]}
     description=${all_commands[$range+1]}
