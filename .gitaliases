@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-reset=$(tput sgr0)
-
 alias gmaster='git stash && git checkout master && ggpull'
 
 alias gremove-all='git checkout . && git clean -fd'
@@ -39,11 +35,11 @@ function git_commands() {
                                glast          'logs commits with only hash'
                                gnb            'git checkout -b'
                                gam            'git commit --amend'
-			       clc	      'copy last commit hash')  
+			       clc	      'copy last commit hash')
 for range in {1..${#all_commands[@]}..2}
   do
     command=${all_commands[$range]}
     description=${all_commands[$range+1]}
-    echo "${red}${command}${green}: ${description}${reset}"
+    echo "${RED}${command}${GREEN}: ${description}${RESET}"
   done
 }

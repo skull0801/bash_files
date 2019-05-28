@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+readonly RED=$(tput setaf 1)
+readonly GREEN=$(tput setaf 2)
+readonly RESET=$(tput sgr0)
+
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
