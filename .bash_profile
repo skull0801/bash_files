@@ -10,9 +10,11 @@ export GITHUB_ORG="skull0801"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
-for file in $(find ~/.profiles.d* -type f); do
-    source $file
-done
+if [ -d "~/.profiles.d" ]; then
+  for file in $(find ~/.profiles.d* -type f); do
+      source $file
+  done
+fi
 
 source ~/.gitaliases
 
@@ -64,4 +66,3 @@ function repo() {
     fi
     cd "${repo_path}"
 }
-
