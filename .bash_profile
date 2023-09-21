@@ -4,6 +4,9 @@ readonly RED=$(tput setaf 1)
 readonly GREEN=$(tput setaf 2)
 readonly RESET=$(tput sgr0)
 
+export DEV_HOME="${HOME}/dev"
+export GITHUB_ORG="skull0801"
+
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
@@ -29,6 +32,8 @@ function reload() {
   exec $SHELL -l
 }
 
+alias rl=reload
+
 function home() {
   cd $HOME
 }
@@ -49,3 +54,14 @@ function ds () {
     echo -e "\nVolumes\n"
     docker volume ls
 }
+
+function repo() {
+    local repo_name="${1}"
+    local repo_path="${DEV_HOME}/${repo_name}"
+    if [ ! -d "${repo_path}" ]; then
+        echo "${repo_path} does not exists, trying to clone..."
+        git clone -- "git@github.com:${skull0801}/${repo_name}.git" "${repo_path}"
+    fi
+    cd "${repo_path}"
+}
+
