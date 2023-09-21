@@ -61,8 +61,8 @@ function repo() {
     local repo_name="${1}"
     local repo_path="${DEV_HOME}/${repo_name}"
     if [ ! -d "${repo_path}" ]; then
-        echo "${repo_path} does not exists, trying to clone..."
-        git clone -- "git@github.com:${skull0801}/${repo_name}.git" "${repo_path}"
+        echo "${repo_path} does not exist, trying to clone..."
+        git clone -- "git@github.com:${GITHUB_ORG}/${repo_name}.git" "${repo_path}"
     fi
     cd "${repo_path}"
 }
